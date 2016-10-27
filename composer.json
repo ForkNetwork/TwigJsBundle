@@ -26,7 +26,10 @@
         "phpunit/phpunit": "~4.5"
     },
     "autoload": {
-        "psr-4": { "JMS\\TwigJsBundle\\": "" }
+        "psr-4": { "JMS\\TwigJsBundle\\": "" },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
     },
     "extra": {
         "branch-alias": {
