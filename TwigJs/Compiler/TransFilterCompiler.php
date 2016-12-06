@@ -2,6 +2,7 @@
 
 namespace JMS\TwigJsBundle\TwigJs\Compiler;
 
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 use TwigJs\FilterCompilerInterface;
 use TwigJs\JsCompiler;
@@ -44,7 +45,7 @@ class TransFilterCompiler implements FilterCompilerInterface
      */
     public function compile(JsCompiler $compiler, \Twig_Node_Expression_Filter $node)
     {
-        if (!($locale = $compiler->getDefine('locale')) || !$this->translator instanceof TranslatorInterface) {
+        if (!($locale = $compiler->getDefine('locale')) || !$this->translator instanceof Translator) {
             return false;
         }
 
