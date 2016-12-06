@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ForkNetwork/TwigJsBundle.svg)](https://travis-ci.org/ForkNetwork/TwigJsBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ForkNetwork/TwigJsBundle/badges/quality-score.png)](https://scrutinizer-ci.com/g/ForkNetwork/TwigJsBundle/)
+[![Build Status](https://img.shields.io/travis/ForkNetwork/TwigJsBundle.svg?style=flat-square)](https://travis-ci.org/ForkNetwork/TwigJsBundle) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/ForkNetwork/TwigJsBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/ForkNetwork/TwigJsBundle/)
 
 TwigJsBundle
 ============
