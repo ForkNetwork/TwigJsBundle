@@ -2,9 +2,10 @@
 
 namespace JMS\TwigJsBundle\Tests\TwigJs\Compiler;
 
+use PHPUnit\Framework\TestCase;
 use TwigJs\JsCompiler;
 
-abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
+abstract class BaseTestCase extends TestCase
 {
     /**
      * @var \Twig_Environment
@@ -17,23 +18,15 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
     protected $compiler;
 
     /**
-     * @param string $source
-     * @param string|null $name
+     * @param string $string
      * @return string
+     * @throws \Twig_Error_Syntax
      */
-    protected function compile($source, $name = null)
+    protected function compile($string)
     {
-        return $this->env->compileSource($source, $name);
-    }
+        $twigSource = new \Twig_Source($string, md5($string));
 
-    /**
-     * @param string $source
-     * @param string|null $name
-     * @return \Twig_Node_Module
-     */
-    protected function getNodes($source, $name = null)
-    {
-        return $this->env->parse($this->env->tokenize($source, $name));
+        return $this->env->compileSource($twigSource);
     }
 
     /**
@@ -41,8 +34,7 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->env = $env = new \Twig_Environment();
-        $env->addExtension(new \Twig_Extension_Core());
+        $this->env = $env = new \Twig_Environment(new \Twig_Loader_Array());
         $env->setCompiler($this->compiler = new JsCompiler($env));
     }
 }
