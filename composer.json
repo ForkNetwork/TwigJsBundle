@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "forknetwork/twig-js": "^3.0",
+        "forknetwork/twig-js": "^3.0.1",
         "symfony/config": "^3.0|^4.0",
         "symfony/dependency-injection": "^3.0|^4.0",
         "symfony/framework-bundle": "^3.0|^4.0",
