@@ -3,7 +3,6 @@
 namespace JMS\TwigJsBundle\Tests\TwigJs\Compiler;
 
 use PHPUnit\Framework\TestCase;
-use Twig\Source;
 use TwigJs\JsCompiler;
 
 abstract class BaseTestCase extends TestCase
@@ -25,7 +24,7 @@ abstract class BaseTestCase extends TestCase
      */
     protected function compile($string)
     {
-        $twigSource = new Source($string, md5($string));
+        $twigSource = new \Twig_Source($string, md5($string));
 
         return $this->env->compileSource($twigSource);
     }
