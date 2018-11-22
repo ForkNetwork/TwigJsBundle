@@ -23,7 +23,7 @@ class TransFilterCompilerTest extends BaseTestCase
 
         $this->translator = new Translator('en');
 
-        $loader = $this->getMock('Symfony\Component\Translation\Loader\LoaderInterface');
+        $loader = $this->createMock('Symfony\Component\Translation\Loader\LoaderInterface');
         $loader
             ->expects($this->any())
             ->method('load')
@@ -53,8 +53,7 @@ class TransFilterCompilerTest extends BaseTestCase
         $this->compiler->setDefine('locale', 'en');
         $this->addMessages(array('remaining' => '%nb% remaining'));
 
-        $this->assertContains(
-            'sb.append(this.env_.filter("trans", "remaining", {"%nb%": ("nb" in context ? context["nb"] : null)}));',
+        $this->assertContains('sb.append(this.env_.filter("trans", "remaining", {"%nb%": ("nb" in context ? context["nb"] : null)}));',
             $this->compile('{{ "remaining"|trans({"%nb%": nb})|raw }}')
         );
     }
@@ -63,17 +62,14 @@ class TransFilterCompilerTest extends BaseTestCase
     {
         $this->compiler->setDefine('locale', 'en');
 
-        $this->assertContains('this.env_.filter("trans",', $this->compile(
-            '{{ foo|trans }}'));
-        $this->assertContains('this.env_.filter("trans",', $this->compile(
-            '{{ "foo"|trans({}, bar) }}'));
+        $this->assertContains('this.env_.filter("trans",', $this->compile('{{ foo|trans }}'));
+        $this->assertContains('this.env_.filter("trans",', $this->compile('{{ "foo"|trans({}, bar) }}'));
     }
 
     public function testCompileWhenNoLocaleIsSet()
     {
         $this->addMessages(array('foo' => 'bar'));
-        $this->assertContains('this.env_.filter("trans",', $this->compile(
-            '{{ "foo"|trans }}'));
+        $this->assertContains('this.env_.filter("trans",', $this->compile('{{ "foo"|trans }}'));
     }
 
     private function addMessages(array $messages, $domain = 'messages', $locale = 'en')
