@@ -4,7 +4,7 @@
     "description": "Integrates twig.js into your Symfony2 application",
     "keywords": ["templating"],
     "homepage": "http://jmsyst.com/bundles/JMSTwigJsBundle",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Rolf Babijn",
