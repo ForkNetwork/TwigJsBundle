@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "forknetwork/twig-js": "^3.0.1",
+        "forknetwork/twig-js": "^4.0",
         "symfony/config": "^3.0|^4.0",
         "symfony/dependency-injection": "^3.0|^4.0",
         "symfony/framework-bundle": "^3.0|^4.0",
@@ -44,7 +44,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.0-dev"
+            "dev-master": "4.0-dev"
         }
     }
 }
