@@ -3,12 +3,15 @@
 namespace JMS\TwigJsBundle\Tests\TwigJs\Compiler;
 
 use PHPUnit\Framework\TestCase;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
+use Twig\Source;
 use TwigJs\JsCompiler;
 
 abstract class BaseTestCase extends TestCase
 {
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $env;
 
@@ -20,11 +23,11 @@ abstract class BaseTestCase extends TestCase
     /**
      * @param string $string
      * @return string
-     * @throws \Twig_Error_Syntax
+     * @throws \Twig\Error\SyntaxError
      */
     protected function compile($string)
     {
-        $twigSource = new \Twig_Source($string, md5($string));
+        $twigSource = new Source($string, md5($string));
 
         return $this->env->compileSource($twigSource);
     }
@@ -34,7 +37,7 @@ abstract class BaseTestCase extends TestCase
      */
     protected function setUp()
     {
-        $this->env = $env = new \Twig_Environment(new \Twig_Loader_Array());
+        $this->env = $env = new Environment(new ArrayLoader());
         $env->setCompiler($this->compiler = new JsCompiler($env));
     }
 }
